@@ -1,7 +1,10 @@
+import type { StaticImageData } from "next/image";
+import heroImage from "@/public/images/hero.jpg";
+
 export type Trainer = {
   slug: string;
   name: string;
-  profileImage: string;
+  profileImage: StaticImageData;
   birthDate: string;
   genderSq: string;
   genderEn: string;
@@ -24,7 +27,7 @@ export const trainers: Trainer[] = [
   {
     slug: "sadik-ferati",
     name: "Sadik Ferati",
-    profileImage: "/images/hero.jpg",
+    profileImage: heroImage,
     birthDate: "1988-02-15",
     genderSq: "Mashkull",
     genderEn: "Male",
@@ -47,7 +50,7 @@ export const trainers: Trainer[] = [
   {
     slug: "arber-shala",
     name: "Arber Shala",
-    profileImage: "/images/hero.jpg",
+    profileImage: heroImage,
     birthDate: "1994-06-09",
     genderSq: "Mashkull",
     genderEn: "Male",
@@ -70,7 +73,7 @@ export const trainers: Trainer[] = [
   {
     slug: "lindon-krasniqi",
     name: "Lindon Krasniqi",
-    profileImage: "/images/hero.jpg",
+    profileImage: heroImage,
     birthDate: "1999-10-27",
     genderSq: "Mashkull",
     genderEn: "Male",

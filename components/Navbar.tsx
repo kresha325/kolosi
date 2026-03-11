@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
+import logoImage from "@/public/images/logo.png";
 
 const navLabels = {
   sq: {
@@ -54,7 +55,7 @@ export default function Navbar() {
         <Link href="/" className="brand-mark" aria-label="KOLOSI-Infinit home">
           <span className="brand-logo-wrap">
             <Image
-              src="/images/logo.png?v=1"
+              src={logoImage}
               alt="KOLOSI-Infinit logo"
               width={46}
               height={46}

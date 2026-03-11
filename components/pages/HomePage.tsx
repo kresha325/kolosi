@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageProvider";
+import heroImage from "@/public/images/hero.jpg";
 
 const content = {
   sq: {
@@ -43,7 +44,7 @@ export default function HomePage() {
 
       <div className="hero-media">
         <Image
-          src="/images/hero.jpg"
+          src={heroImage}
           alt={t.heroMedia}
           fill
           priority
