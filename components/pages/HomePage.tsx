@@ -14,10 +14,6 @@ const content = {
       "KOLOSI-Infinit është klub sportiv profesional në Prizren i fokusuar në zhvillimin e sportistëve nga niveli fillestar deri te garuesit elitarë.",
     cta: "Bashkohu me Klubin",
     heroMedia: "Foto hero e KOLOSI-Infinit",
-    anchorAbout: "Rreth",
-    anchorTraining: "Trajnime",
-    anchorDiscover: "Faqet",
-    anchorContact: "Kontakt",
     aboutTitle: "Rreth Nesh",
     aboutText:
       "KOLOSI-Infinit është ndërtuar mbi punën e disiplinuar, zhvillimin afatgjatë dhe kulturën e garës së ndershme. Nga fillestarët deri te niveli elitar, çdo sportist trajtohet me plan të qartë dhe mbështetje profesionale.",
@@ -74,10 +70,6 @@ const content = {
       "KOLOSI-Infinit is a professional sports club in Prizren focused on athlete development from beginner level to elite competition.",
     cta: "Join the Club",
     heroMedia: "KOLOSI-Infinit hero image",
-    anchorAbout: "About",
-    anchorTraining: "Training",
-    anchorDiscover: "Pages",
-    anchorContact: "Contact",
     aboutTitle: "About Us",
     aboutText:
       "KOLOSI-Infinit is built on disciplined work, long-term athlete development, and a strong competition culture. From beginners to elite level, each athlete follows a clear plan with professional support.",
@@ -155,13 +147,6 @@ export default function HomePage() {
             className="hero-photo"
           />
         </div>
-      </section>
-
-      <section className="home-anchor-row">
-        <a href="#home-about" className="home-anchor-link">{t.anchorAbout}</a>
-        <a href="#home-training" className="home-anchor-link">{t.anchorTraining}</a>
-        <a href="#home-discover" className="home-anchor-link">{t.anchorDiscover}</a>
-        <a href="#home-contact" className="home-anchor-link">{t.anchorContact}</a>
       </section>
 
       <section id="home-about" className="content-card home-band">

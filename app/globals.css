@@ -134,13 +134,27 @@ a {
 	line-height: 1;
 }
 
+.theme-toggle {
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	border-radius: 999px;
+	background: transparent;
+	color: var(--white);
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
 
 .menu-toggle {
 	font-size: 1.05rem;
 }
 
 .language-toggle:hover,
-.menu-toggle:hover {
+.menu-toggle:hover,
+.theme-toggle:hover {
 	border-color: var(--red);
 }
 
@@ -191,26 +205,6 @@ a {
 
 .home-hero-section {
 	margin-bottom: 0.2rem;
-}
-
-.home-anchor-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.55rem;
-}
-
-.home-anchor-link {
-	padding: 0.46rem 0.75rem;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-	border-radius: 999px;
-	font-size: 0.82rem;
-	font-weight: 700;
-	color: #f4f4f4;
-}
-
-.home-anchor-link:hover {
-	border-color: var(--red);
-	background: rgba(225, 6, 0, 0.12);
 }
 
 .home-band {
@@ -890,6 +884,194 @@ h2 {
 	color: #fff;
 }
 
+@media (prefers-color-scheme: light) {
+	body.site-body {
+		color: #141414;
+		background:
+			radial-gradient(circle at 15% 5%, rgba(225, 6, 0, 0.12), transparent 40%),
+			linear-gradient(145deg, #f6f7f9 0%, #f0f2f5 55%, #e9edf2 100%);
+	}
+
+	.site-header {
+		background: rgba(255, 255, 255, 0.86);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	}
+
+	.brand-i,
+	.lead-text,
+	.content-card p,
+	.profile-list,
+	.footer-simple-line {
+		color: #444;
+	}
+
+	.hero-copy,
+	.content-card,
+	.gallery-item,
+	.wrestler-photo-wrap,
+	.footer-column {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(246, 247, 250, 0.98));
+		border: 1px solid rgba(0, 0, 0, 0.12);
+		box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+	}
+
+	.burger-panel,
+	.mobile-bottom-nav {
+		background: rgba(255, 255, 255, 0.94);
+		border: 1px solid rgba(0, 0, 0, 0.14);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+	}
+
+	.burger-link,
+	.mobile-bottom-link,
+	.language-toggle,
+	.menu-toggle,
+	.footer-simple-links a,
+	.footer-simple-line a {
+		color: #1f1f1f;
+	}
+
+	.language-toggle,
+	.menu-toggle,
+	.mobile-bottom-menu-btn,
+	.mobile-bottom-link {
+		border-color: rgba(0, 0, 0, 0.2);
+	}
+
+	.secondary-btn,
+	.back-link {
+		border-color: rgba(0, 0, 0, 0.22);
+		color: #1f1f1f;
+	}
+
+	.stat-card,
+	.record-cell {
+		background: rgba(0, 0, 0, 0.03);
+		border: 1px solid rgba(0, 0, 0, 0.12);
+	}
+
+	.stat-card span,
+	.record-cell span {
+		color: #555;
+	}
+
+	.stat-card strong,
+	.record-cell strong,
+	h1,
+	h2,
+	h3,
+	.footer-column h3,
+	.footer-column h4,
+	.footer-simple-col h3 {
+		color: #141414;
+	}
+
+	.site-footer,
+	.footer-bottom {
+		border-top-color: rgba(0, 0, 0, 0.12);
+		color: #424242;
+	}
+}
+
+body.site-body.theme-light {
+	color: #141414;
+	background:
+		radial-gradient(circle at 15% 5%, rgba(225, 6, 0, 0.12), transparent 40%),
+		linear-gradient(145deg, #f6f7f9 0%, #f0f2f5 55%, #e9edf2 100%);
+}
+
+body.site-body.theme-light .site-header {
+	background: rgba(255, 255, 255, 0.86);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.site-body.theme-light .brand-i,
+body.site-body.theme-light .lead-text,
+body.site-body.theme-light .content-card p,
+body.site-body.theme-light .profile-list,
+body.site-body.theme-light .footer-simple-line {
+	color: #444;
+}
+
+body.site-body.theme-light .hero-copy,
+body.site-body.theme-light .content-card,
+body.site-body.theme-light .gallery-item,
+body.site-body.theme-light .wrestler-photo-wrap,
+body.site-body.theme-light .footer-column {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(246, 247, 250, 0.98));
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+}
+
+body.site-body.theme-light .burger-panel,
+body.site-body.theme-light .mobile-bottom-nav {
+	background: rgba(255, 255, 255, 0.94);
+	border: 1px solid rgba(0, 0, 0, 0.14);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+body.site-body.theme-light .burger-link,
+body.site-body.theme-light .mobile-bottom-link,
+body.site-body.theme-light .language-toggle,
+body.site-body.theme-light .menu-toggle,
+body.site-body.theme-light .theme-toggle,
+body.site-body.theme-light .footer-simple-links a,
+body.site-body.theme-light .footer-simple-line a {
+	color: #1f1f1f;
+}
+
+body.site-body.theme-light .language-toggle,
+body.site-body.theme-light .menu-toggle,
+body.site-body.theme-light .theme-toggle,
+body.site-body.theme-light .mobile-bottom-menu-btn,
+body.site-body.theme-light .mobile-bottom-link {
+	border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.site-body.theme-light .secondary-btn,
+body.site-body.theme-light .back-link {
+	border-color: rgba(0, 0, 0, 0.22);
+	color: #1f1f1f;
+}
+
+body.site-body.theme-light .stat-card,
+body.site-body.theme-light .record-cell {
+	background: rgba(0, 0, 0, 0.03);
+	border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+body.site-body.theme-light .stat-card span,
+body.site-body.theme-light .record-cell span {
+	color: #555;
+}
+
+body.site-body.theme-light .stat-card strong,
+body.site-body.theme-light .record-cell strong,
+body.site-body.theme-light h1,
+body.site-body.theme-light h2,
+body.site-body.theme-light h3,
+body.site-body.theme-light .footer-column h3,
+body.site-body.theme-light .footer-column h4,
+body.site-body.theme-light .footer-simple-col h3 {
+	color: #141414;
+}
+
+body.site-body.theme-light .site-footer,
+body.site-body.theme-light .footer-bottom {
+	border-top-color: rgba(0, 0, 0, 0.12);
+	color: #424242;
+}
+
+body.site-body.theme-light .brand-logo-wrap,
+body.site-body.theme-light .brand-logo,
+body.site-body.theme-light .hero-media {
+	border-radius: 0;
+}
+
+body.site-body.theme-light .brand-logo {
+	transform: scale(1);
+}
+
 @media (max-width: 1020px) {
 	.home-grid,
 	.contact-layout {
@@ -963,7 +1145,11 @@ h2 {
 @media (max-width: 700px) {
 	.page-main {
 		padding-top: 1.2rem;
-		padding-bottom: 6rem;
+		padding-bottom: calc(8rem + env(safe-area-inset-bottom));
+	}
+
+	.site-footer {
+		padding-bottom: calc(6.2rem + env(safe-area-inset-bottom));
 	}
 
 	.nav-wrap {
@@ -1031,10 +1217,6 @@ h2 {
 	.home-training-grid,
 	.home-discover-grid {
 		grid-template-columns: 1fr;
-	}
-
-	.home-anchor-row {
-		gap: 0.42rem;
 	}
 
 	.home-cta-strip {

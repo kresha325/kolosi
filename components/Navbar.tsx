@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Home, Image as ImageIcon, Menu, Shield, Users } from "lucide-react";
+import { Home, Image as ImageIcon, Menu, Moon, Shield, Sun, Users } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import logoImage from "@/public/images/logo.png";
 
@@ -19,6 +19,8 @@ const navLabels = {
     gallery: "Galeri",
     contact: "Kontakt",
     toggle: "EN",
+    themeLight: "Light",
+    themeDark: "Dark",
   },
   en: {
     home: "Home",
@@ -30,6 +32,8 @@ const navLabels = {
     gallery: "Gallery",
     contact: "Contact",
     toggle: "SQ",
+    themeLight: "Light",
+    themeDark: "Dark",
   },
 };
 
@@ -57,7 +61,7 @@ function MobileNavIcon({ icon }: { icon: BottomIcon }) {
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { language, toggleLanguage } = useLanguage();
+  const { language, toggleLanguage, theme, toggleTheme } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = navLabels[language];
 
@@ -113,6 +117,20 @@ export default function Navbar() {
           </Link>
 
           <nav className="site-nav" aria-label="Main navigation">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label="Switch theme"
+              title={theme === "dark" ? t.themeLight : t.themeDark}
+            >
+              {theme === "dark" ? (
+                <Sun size={16} aria-hidden="true" />
+              ) : (
+                <Moon size={16} aria-hidden="true" />
+              )}
+            </button>
+
             <button
               type="button"
               className="language-toggle"
