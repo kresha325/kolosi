@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Home, Image as ImageIcon, Menu, Moon, Shield, Sun, Users } from "lucide-react";
+import { Home, Image as ImageIcon, Medal, Menu, Moon, Sun, Users } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import logoImage from "@/public/images/logo.png";
 
@@ -49,7 +49,7 @@ function MobileNavIcon({ icon }: { icon: BottomIcon }) {
   }
 
   if (icon === "wrestlers") {
-    return <Shield aria-hidden="true" className="mobile-bottom-icon" strokeWidth={2.2} />;
+    return <Medal aria-hidden="true" className="mobile-bottom-icon" strokeWidth={2.2} />;
   }
 
   if (icon === "gallery") {
