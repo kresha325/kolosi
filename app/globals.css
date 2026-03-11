@@ -1,26 +1,757 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--red: #e10600;
+	--black: #111111;
+	--white: #ffffff;
+	--muted: #d6d6d6;
+	--surface: #1a1a1a;
+	--border: #2e2e2e;
+	--shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+	box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+body.site-body {
+	font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+	color: var(--white);
+	background:
+		radial-gradient(circle at 15% 5%, rgba(225, 6, 0, 0.25), transparent 45%),
+		linear-gradient(145deg, #050505 0%, #111111 48%, #0a0a0a 100%);
+	min-height: 100vh;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.site-shell {
+	width: min(1160px, 92vw);
+	margin: 0 auto;
+}
+
+.page-main {
+	padding: 2.5rem 0 4rem;
+	min-height: calc(100vh - 180px);
+}
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	background: rgba(17, 17, 17, 0.85);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.95rem 0;
+}
+
+.brand-mark {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	line-height: 1.05;
+}
+
+.brand-logo-wrap {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	padding: 0;
+	border-radius: 999px;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+.brand-logo {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 999px;
+	transform: scale(1.28);
+}
+
+.brand-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+}
+
+.brand-k {
+	color: var(--red);
+	font-weight: 900;
+	letter-spacing: 0.04em;
+	font-size: 1.15rem;
+}
+
+.brand-i {
+	font-size: 0.72rem;
+	color: var(--muted);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.site-nav {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.language-toggle,
+.menu-toggle {
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	border-radius: 999px;
+	background: transparent;
+	color: var(--white);
+	font-weight: 700;
+	min-width: 52px;
+	height: 40px;
+	padding: 0 0.9rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	line-height: 1;
+}
+
+
+.menu-toggle {
+	font-size: 1.05rem;
+}
+
+.language-toggle:hover,
+.menu-toggle:hover {
+	border-color: var(--red);
+}
+
+.burger-panel {
+	position: absolute;
+	top: calc(100% + 0.6rem);
+	right: 0;
+	min-width: 220px;
+	display: grid;
+	gap: 0.35rem;
+	padding: 0.55rem;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	background: rgba(12, 12, 12, 0.98);
+	box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+	z-index: 40;
+}
+
+.burger-link {
+	padding: 0.55rem 0.7rem;
+	border-radius: 10px;
+	font-size: 0.92rem;
+	color: #f1f1f1;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.burger-link:hover {
+	background: rgba(225, 6, 0, 0.2);
+	color: #fff;
+}
+
+.burger-link.is-active {
+	background: rgba(225, 6, 0, 0.9);
+	color: #fff;
+}
+
+.home-grid {
+	display: grid;
+	grid-template-columns: 1.15fr 1fr;
+	gap: 1.5rem;
+	align-items: stretch;
+}
+
+.hero-copy,
+.hero-media,
+.content-card,
+.gallery-item {
+	border-radius: 18px;
+	border: 1px solid var(--border);
+	background: linear-gradient(180deg, rgba(26, 26, 26, 0.92), rgba(16, 16, 16, 0.96));
+	box-shadow: var(--shadow);
+}
+
+.hero-copy {
+	padding: 2rem;
+}
+
+.eyebrow {
+	display: inline-block;
+	margin: 0;
+	color: var(--red);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-size: 0.74rem;
+}
+
+h1,
+h2,
+p,
+ul {
+	margin: 0;
+}
+
+h1 {
+	font-size: clamp(2rem, 4vw, 3.4rem);
+	line-height: 1.04;
+	margin-top: 0.65rem;
+}
+
+h2 {
+	font-size: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+.hero-slogan {
+	margin-top: 0.85rem;
+	color: #ffd9d8;
+	font-weight: 600;
+}
+
+.lead-text {
+	margin-top: 1rem;
+	color: var(--muted);
+	line-height: 1.65;
+}
+
+.primary-btn {
+	margin-top: 1.4rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.8rem 1.25rem;
+	border: 0;
+	border-radius: 12px;
+	background: var(--red);
+	color: var(--white);
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.primary-btn:hover {
+	filter: brightness(1.05);
+}
+
+.hero-media,
+.media-placeholder,
+.map-placeholder {
+	display: grid;
+	place-items: center;
+	color: #f2b6b5;
+	text-align: center;
+	background:
+		linear-gradient(160deg, rgba(225, 6, 0, 0.17), rgba(17, 17, 17, 0.95)),
+		repeating-linear-gradient(
+			45deg,
+			rgba(255, 255, 255, 0.02),
+			rgba(255, 255, 255, 0.02) 14px,
+			rgba(255, 255, 255, 0.04) 14px,
+			rgba(255, 255, 255, 0.04) 28px
+		);
+	border: 1px dashed rgba(255, 255, 255, 0.24);
+}
+
+.hero-media {
+	position: relative;
+	overflow: hidden;
+	min-height: 360px;
+	padding: 0;
+}
+
+.hero-photo {
+	object-fit: cover;
+}
+
+.page-stack {
+	display: grid;
+	gap: 1rem;
+}
+
+.content-card {
+	padding: 1.4rem;
+	display: grid;
+	gap: 0.75rem;
+}
+
+.content-card p {
+	color: var(--muted);
+	line-height: 1.65;
+}
+
+.program-list {
+	margin: 0;
+	padding-left: 1.15rem;
+	display: grid;
+	gap: 0.7rem;
+	color: var(--muted);
+}
+
+.schedule-grid {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.cell {
+	padding: 0.75rem;
+	border-right: 1px solid rgba(255, 255, 255, 0.08);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	text-align: left;
+}
+
+.cell.head {
+	font-weight: 700;
+	color: var(--white);
+}
+
+.media-placeholder {
+	min-height: 220px;
+	border-radius: 14px;
+	padding: 1rem;
+}
+
+.media-placeholder.small {
+	min-height: 180px;
+	border-radius: 12px;
+}
+
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.95rem;
+}
+
+.gallery-item {
+	overflow: hidden;
+}
+
+.gallery-item img,
+.gallery-item video,
+.gallery-item .media-placeholder {
+	width: 100%;
+}
+
+.gallery-item img,
+.gallery-item video {
+	display: block;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+.gallery-item figcaption {
+	padding: 0.72rem 0.85rem 0.9rem;
+	color: #e9e9e9;
+	font-size: 0.9rem;
+}
+
+.wrestlers-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.trainers-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.sponsors-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.wrestler-card {
+	align-content: start;
+}
+
+.trainer-card {
+	align-content: start;
+}
+
+.sponsor-card {
+	align-content: start;
+}
+
+.secondary-btn,
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.6rem 0.95rem;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	color: #f0f0f0;
+	font-weight: 700;
+	font-size: 0.88rem;
+	width: fit-content;
+}
+
+.secondary-btn:hover,
+.back-link:hover {
+	border-color: var(--red);
+	color: #ffffff;
+}
+
+.wrestler-detail-card {
+	gap: 1rem;
+}
+
+.wrestler-profile-header {
+	display: grid;
+	grid-template-columns: 260px 1.2fr 0.9fr;
+	gap: 1rem;
+	align-items: start;
+}
+
+.wrestler-photo-wrap {
+	border-radius: 14px;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.wrestler-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 13 / 16;
+}
+
+.wrestler-personal-card,
+.wrestler-core-card {
+	display: grid;
+	gap: 0.7rem;
+}
+
+.profile-list.compact {
+	gap: 0.35rem;
+	padding-left: 0;
+	list-style: none;
+}
+
+.wrestler-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.75rem;
+}
+
+.stat-card,
+.record-cell {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 12px;
+	padding: 0.7rem;
+	display: grid;
+	gap: 0.2rem;
+}
+
+.stat-card span,
+.record-cell span {
+	font-size: 0.8rem;
+	color: #c6c6c6;
+}
+
+.stat-card strong,
+.record-cell strong {
+	font-size: 1rem;
+	color: #fff;
+}
+
+.wrestler-record {
+	display: grid;
+	gap: 0.6rem;
+}
+
+.record-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.75rem;
+}
+
+.profile-list {
+	margin: 0;
+	padding-left: 1.1rem;
+	display: grid;
+	gap: 0.45rem;
+	color: var(--muted);
+}
+
+.contact-layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	align-items: stretch;
+}
+
+.contact-layout > .content-card {
+	height: 100%;
+	border-radius: 18px;
+}
+
+.contact-form {
+	display: grid;
+	gap: 0.8rem;
+}
+
+.contact-info-list {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.contact-info-list p {
+	color: #e6e6e6;
+}
+
+.contact-inline-actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 0.35rem;
+}
+
+.inline-action-link {
+	color: #fff;
+	font-weight: 700;
+	font-size: 0.95rem;
+}
+
+.inline-action-link:hover {
+	color: #ffb5b3;
+}
+
+.inline-action-link:not(:last-child)::after {
+	content: "|";
+	margin-left: 0.5rem;
+	color: rgba(255, 255, 255, 0.45);
+}
+
+.contact-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+	margin-top: 0.25rem;
+}
+
+.action-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.55rem 0.85rem;
+	border-radius: 10px;
+	font-weight: 700;
+	font-size: 0.88rem;
+	border: 1px solid transparent;
+}
+
+.call-btn {
+	background: #e10600;
+	color: #fff;
+}
+
+.whatsapp-btn {
+	background: #128c7e;
+	color: #fff;
+}
+
+.sms-btn {
+	background: transparent;
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.25);
+}
+
+.action-btn:hover {
+	filter: brightness(1.06);
+}
+
+.contact-form label {
+	display: grid;
+	gap: 0.35rem;
+	color: #f3f3f3;
+	font-size: 0.92rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background: rgba(0, 0, 0, 0.3);
+	color: var(--white);
+	padding: 0.72rem;
+	font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+	outline: 1px solid var(--red);
+	border-color: var(--red);
+}
+
+.map-placeholder {
+	min-height: 280px;
+	border-radius: 14px;
+}
+
+.map-embed {
+	width: 100%;
+	min-height: 320px;
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	border-radius: 14px;
+	background: #101010;
+}
+
+.site-footer {
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 1rem 0 1.6rem;
+	color: #bfbfbf;
+}
+
+.footer-content {
+	text-align: center;
+	font-size: 0.9rem;
+}
+
+@media (max-width: 1020px) {
+	.home-grid,
+	.contact-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-layout {
+		gap: 1rem;
+	}
+
+	.contact-layout > .content-card {
+		border-radius: 18px;
+	}
+
+	.gallery-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.wrestlers-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.trainers-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.sponsors-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.wrestler-profile-header {
+		grid-template-columns: 220px 1fr;
+	}
+
+	.wrestler-core-card {
+		grid-column: 1 / -1;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.wrestler-stats-grid,
+	.record-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 700px) {
+	.page-main {
+		padding-top: 1.2rem;
+	}
+
+	.nav-wrap {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.site-nav {
+		width: auto;
+		justify-content: flex-end;
+		flex-wrap: nowrap;
+	}
+
+	.brand-mark {
+		gap: 0.5rem;
+	}
+
+	.brand-k {
+		font-size: 1.05rem;
+	}
+
+	.brand-i {
+		font-size: 0.68rem;
+	}
+
+	.hero-copy {
+		padding: 1.2rem;
+	}
+
+	.gallery-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.wrestlers-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.trainers-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.sponsors-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.wrestler-profile-header {
+		grid-template-columns: 1fr;
+	}
+
+	.wrestler-core-card {
+		grid-template-columns: 1fr;
+	}
+
+	.wrestler-stats-grid,
+	.record-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.schedule-grid {
+		display: table;
+	}
+
+	.cell {
+		border-right: 0;
+	}
 }
