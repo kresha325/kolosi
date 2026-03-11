@@ -197,17 +197,31 @@ export default function Navbar() {
           </Link>
         ))}
 
-        <button
-          type="button"
-          className={`mobile-bottom-link mobile-bottom-menu-btn ${isMenuOpen ? "is-active" : ""}`}
-          onClick={() => setIsMenuOpen((current) => !current)}
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-          aria-controls="main-burger-menu"
-        >
-          <MobileNavIcon icon="menu" />
-          <span className="mobile-bottom-label">Menu</span>
-        </button>
+        {isMenuOpen ? (
+          <button
+            type="button"
+            className="mobile-bottom-link mobile-bottom-menu-btn is-active"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Toggle menu"
+            aria-expanded="true"
+            aria-controls="main-burger-menu"
+          >
+            <MobileNavIcon icon="menu" />
+            <span className="mobile-bottom-label">Menu</span>
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="mobile-bottom-link mobile-bottom-menu-btn"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="main-burger-menu"
+          >
+            <MobileNavIcon icon="menu" />
+            <span className="mobile-bottom-label">Menu</span>
+          </button>
+        )}
       </nav>
     </>
   );
