@@ -32,6 +32,8 @@ jobs:
 
       - name: Build site
         run: npm run build
+        env:
+          NEXT_PUBLIC_FORMSPREE_ENDPOINT: https://formspree.io/f/maqpopng
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
