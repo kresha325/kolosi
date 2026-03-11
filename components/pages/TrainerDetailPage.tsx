@@ -59,6 +59,7 @@ export default function TrainerDetailPage({ trainer }: { trainer: Trainer }) {
               alt={trainer.name}
               width={260}
               height={320}
+              sizes="(max-width: 700px) 92vw, (max-width: 1020px) 40vw, 30vw"
               className="wrestler-photo"
             />
           </div>

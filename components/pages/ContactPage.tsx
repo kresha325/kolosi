@@ -1,5 +1,7 @@
 "use client";
 
+import { MessageSquare, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "@/components/LanguageProvider";
 
 const content = {
@@ -84,19 +86,34 @@ export default function ContactPage() {
           </div>
 
           <div className="contact-inline-actions">
-            <a href="tel:+38349158322" className="inline-action-link">
-              {t.callNow}
+            <a
+              href="tel:+38349158322"
+              className="inline-action-link"
+              aria-label={t.callNow}
+              title={t.callNow}
+            >
+              <Phone size={20} strokeWidth={2.2} />
+              <span className="sr-only">{t.callNow}</span>
             </a>
             <a
               href="https://wa.me/38349158322"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-action-link"
+              aria-label={t.whatsappNow}
+              title={t.whatsappNow}
             >
-              {t.whatsappNow}
+              <FaWhatsapp size={20} aria-hidden="true" />
+              <span className="sr-only">{t.whatsappNow}</span>
             </a>
-            <a href="sms:+38349158322" className="inline-action-link">
-              {t.smsNow}
+            <a
+              href="sms:+38349158322"
+              className="inline-action-link"
+              aria-label={t.smsNow}
+              title={t.smsNow}
+            >
+              <MessageSquare size={20} strokeWidth={2.2} />
+              <span className="sr-only">{t.smsNow}</span>
             </a>
           </div>
           <p>

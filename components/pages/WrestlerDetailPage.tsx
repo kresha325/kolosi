@@ -75,6 +75,7 @@ export default function WrestlerDetailPage({ wrestler }: { wrestler: Wrestler })
               alt={wrestler.name}
               width={260}
               height={320}
+              sizes="(max-width: 700px) 92vw, (max-width: 1020px) 40vw, 30vw"
               className="wrestler-photo"
             />
           </div>
