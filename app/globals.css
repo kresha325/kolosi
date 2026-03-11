@@ -926,6 +926,7 @@ h2 {
 	.mobile-bottom-link,
 	.language-toggle,
 	.menu-toggle,
+	.theme-toggle,
 	.footer-simple-links a,
 	.footer-simple-line a {
 		color: #1f1f1f;
@@ -933,6 +934,7 @@ h2 {
 
 	.language-toggle,
 	.menu-toggle,
+	.theme-toggle,
 	.mobile-bottom-menu-btn,
 	.mobile-bottom-link {
 		border-color: rgba(0, 0, 0, 0.2);
@@ -1162,6 +1164,28 @@ body.site-body.theme-light .brand-logo {
 		width: auto;
 		justify-content: flex-end;
 		flex-wrap: nowrap;
+		gap: 0.25rem;
+	}
+
+	.theme-toggle,
+	.language-toggle {
+		height: 36px;
+		min-width: 44px;
+		padding: 0 0.6rem;
+	}
+
+	.theme-toggle {
+		width: 36px;
+		padding: 0;
+	}
+
+	.brand-logo-wrap {
+		width: 40px;
+		height: 40px;
+	}
+
+	.brand-logo {
+		transform: scale(1.15);
 	}
 
 	.site-nav .menu-toggle {
@@ -1195,11 +1219,11 @@ body.site-body.theme-light .brand-logo {
 	}
 
 	.brand-k {
-		font-size: 1.05rem;
+		font-size: 0.98rem;
 	}
 
 	.brand-i {
-		font-size: 0.68rem;
+		display: none;
 	}
 
 	.hero-copy {
