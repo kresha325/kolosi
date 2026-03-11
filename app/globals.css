@@ -677,6 +677,19 @@ h2 {
 	font-size: 0.92rem;
 }
 
+.form-feedback {
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.form-feedback.success {
+	color: #4ddf84;
+}
+
+.form-feedback.error {
+	color: #ff8b8b;
+}
+
 .contact-form input,
 .contact-form textarea {
 	width: 100%;

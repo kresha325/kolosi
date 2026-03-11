@@ -1,5 +1,6 @@
 "use client";
 
+import { type FormEvent, useState } from "react";
 import { MessageSquare, Phone } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -22,10 +23,13 @@ const content = {
     emailField: "Email",
     message: "Mesazhi",
     submit: "Dërgo",
+    sending: "Duke dërguar...",
     mapTitle: "Lokacioni në Hartë",
     callNow: "Telefono Tani",
     whatsappNow: "WhatsApp",
     smsNow: "SMS",
+    successMessage: "Mesazhi u dërgua me sukses.",
+    errorMessage: "Dërgimi dështoi. Ju lutem provoni përsëri.",
     endpointMissing:
       "Vendos NEXT_PUBLIC_FORMSPREE_ENDPOINT në .env.local për të aktivizuar dërgimin me email.",
   },
@@ -46,10 +50,13 @@ const content = {
     emailField: "Email",
     message: "Message",
     submit: "Send",
+    sending: "Sending...",
     mapTitle: "Location on Map",
     callNow: "Call Now",
     whatsappNow: "WhatsApp",
     smsNow: "SMS",
+    successMessage: "Message sent successfully.",
+    errorMessage: "Sending failed. Please try again.",
     endpointMissing:
       "Set NEXT_PUBLIC_FORMSPREE_ENDPOINT in .env.local to enable email delivery.",
   },
@@ -62,6 +69,39 @@ const mapEmbedUrl =
 export default function ContactPage() {
   const { language } = useLanguage();
   const t = content[language];
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!formspreeEndpoint) {
+      return;
+    }
+
+    setSubmitState("sending");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Formspree submit failed");
+      }
+
+      form.reset();
+      setSubmitState("success");
+    } catch {
+      setSubmitState("error");
+    }
+  };
 
   return (
     <section className="site-shell page-stack">
@@ -126,8 +166,7 @@ export default function ContactPage() {
           <h2>{t.formTitle}</h2>
           <form
             className="contact-form"
-            action={formspreeEndpoint || "#"}
-            method="post"
+            onSubmit={handleSubmit}
           >
             <input
               type="hidden"
@@ -148,8 +187,14 @@ export default function ContactPage() {
               <textarea name="message" rows={5} required />
             </label>
             <button type="submit" className="primary-btn">
-              {t.submit}
+              {submitState === "sending" ? t.sending : t.submit}
             </button>
+            {submitState === "success" ? (
+              <small className="form-feedback success">{t.successMessage}</small>
+            ) : null}
+            {submitState === "error" ? (
+              <small className="form-feedback error">{t.errorMessage}</small>
+            ) : null}
             {!formspreeEndpoint ? <small>{t.endpointMissing}</small> : null}
           </form>
         </article>
