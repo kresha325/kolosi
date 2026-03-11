@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight, Camera, Medal, ShieldCheck, Users } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
 import heroImage from "@/public/images/logo.png";
 
@@ -40,24 +41,28 @@ const content = {
         title: "Trajnerët",
         text: "Ekipi profesional që udhëheq progresin teknik dhe fizik.",
         href: "/trainers",
+        icon: "trainers",
       },
       {
         title: "Mundësit",
         text: "Profilet e sportistëve, kategoritë dhe rezultatet e fundit.",
         href: "/wrestlers",
+        icon: "wrestlers",
       },
       {
         title: "Galeri",
         text: "Foto dhe video nga stërvitjet, garat dhe aktivitetet e klubit.",
         href: "/gallery",
+        icon: "gallery",
       },
       {
         title: "Sponsorët",
         text: "Partnerët që mbështesin rrugëtimin e KOLOSI-Infinit.",
         href: "/sponsors",
+        icon: "sponsors",
       },
     ],
-    discoverAction: "Hap Faqen",
+    discoverAction: "Hap",
     ctaTitle: "Bëhu Pjesë e KOLOSI-Infinit",
     ctaText: "Na kontakto për regjistrim, orare dhe informata të detajuara.",
     ctaAction: "Na Kontakto",
@@ -96,24 +101,28 @@ const content = {
         title: "Trainers",
         text: "Professional staff leading technical and physical progress.",
         href: "/trainers",
+        icon: "trainers",
       },
       {
         title: "Wrestlers",
         text: "Athlete profiles, categories, and recent performance highlights.",
         href: "/wrestlers",
+        icon: "wrestlers",
       },
       {
         title: "Gallery",
         text: "Photos and videos from training sessions, matches, and club life.",
         href: "/gallery",
+        icon: "gallery",
       },
       {
         title: "Sponsors",
         text: "Partners who support the KOLOSI-Infinit journey.",
         href: "/sponsors",
+        icon: "sponsors",
       },
     ],
-    discoverAction: "Open Page",
+    discoverAction: "Open",
     ctaTitle: "Become Part of KOLOSI-Infinit",
     ctaText: "Contact us for registration, schedule details, and full information.",
     ctaAction: "Contact Us",
@@ -123,6 +132,12 @@ const content = {
 export default function HomePage() {
   const { language } = useLanguage();
   const t = content[language];
+  const iconMap = {
+    trainers: Users,
+    wrestlers: Medal,
+    gallery: Camera,
+    sponsors: ShieldCheck,
+  } as const;
 
   return (
     <div className="site-shell home-single">
@@ -177,10 +192,21 @@ export default function HomePage() {
         <div className="home-discover-grid">
           {t.discoverCards.map((item) => (
             <article key={item.href} className="content-card home-mini-card">
-              <h3>{item.title}</h3>
+              <div className="home-discover-head">
+                {(() => {
+                  const Icon = iconMap[item.icon as keyof typeof iconMap] ?? Users;
+                  return (
+                    <span className="home-discover-icon" aria-hidden="true">
+                      <Icon size={18} strokeWidth={2.25} />
+                    </span>
+                  );
+                })()}
+                <h3>{item.title}</h3>
+              </div>
               <p>{item.text}</p>
-              <Link href={item.href} className="secondary-btn home-page-link">
+              <Link href={item.href} className="secondary-btn home-page-link home-open-link">
                 {t.discoverAction}
+                <ArrowUpRight size={16} strokeWidth={2.2} aria-hidden="true" />
               </Link>
             </article>
           ))}
