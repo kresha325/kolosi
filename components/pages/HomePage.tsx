@@ -66,6 +66,7 @@ const content = {
     ctaTitle: "Bëhu Pjesë e KOLOSI-Infinit",
     ctaText: "Na kontakto për regjistrim, orare dhe informata të detajuara.",
     ctaAction: "Na Kontakto",
+    ctaMapTitle: "Lokacioni i klubit",
   },
   en: {
     badge: "Olympic Wrestling Club",
@@ -126,8 +127,12 @@ const content = {
     ctaTitle: "Become Part of KOLOSI-Infinit",
     ctaText: "Contact us for registration, schedule details, and full information.",
     ctaAction: "Contact Us",
+    ctaMapTitle: "Club location",
   },
 };
+
+const mapEmbedUrl =
+  "https://www.google.com/maps?q=6P9W%2BFF6%2C%20Bazhdarhane%2C%20Prizren%2020000&output=embed";
 
 export default function HomePage() {
   const { language } = useLanguage();
@@ -214,13 +219,21 @@ export default function HomePage() {
       </section>
 
       <section id="home-contact" className="content-card home-cta-strip">
-        <div>
+        <div className="home-cta-copy">
           <h2>{t.ctaTitle}</h2>
           <p>{t.ctaText}</p>
+          <Link href="/contact" className="primary-btn">
+            {t.ctaAction}
+          </Link>
         </div>
-        <Link href="/contact" className="primary-btn">
-          {t.ctaAction}
-        </Link>
+        <iframe
+          src={mapEmbedUrl}
+          title={t.ctaMapTitle}
+          className="home-cta-map"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
       </section>
     </div>
   );
